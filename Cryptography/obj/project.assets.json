@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "J:\\Project\\Cryptography\\Cryptography.csproj",
+      "projectUniqueName": "C:\\Users\\Tsezar\\Documents\\GitHub\\secretwritting-by-Tsezar\\Cryptography\\Cryptography.csproj",
       "projectName": "Cryptography",
-      "projectPath": "J:\\Project\\Cryptography\\Cryptography.csproj",
+      "projectPath": "C:\\Users\\Tsezar\\Documents\\GitHub\\secretwritting-by-Tsezar\\Cryptography\\Cryptography.csproj",
       "packagesPath": "C:\\Users\\Tsezar\\.nuget\\packages\\",
-      "outputPath": "J:\\Project\\Cryptography\\obj\\",
+      "outputPath": "C:\\Users\\Tsezar\\Documents\\GitHub\\secretwritting-by-Tsezar\\Cryptography\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

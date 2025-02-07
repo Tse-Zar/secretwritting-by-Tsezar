@@ -1,18 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Cryptography
+﻿namespace Cryptography
 {
     class CesarCrypto(string input, int step = 1)
     {
-        private readonly static char[] charsRuVariable = "абвгдеёжзийклмнопрстуфхцчшщъыьэюя".ToCharArray();
-        private readonly int charsRuValue = charsRuVariable.Length;
-
-        private readonly static char[] charsEngVariable = "abcdefghijklmnopqrstuvwxyz".ToCharArray();
-        private readonly int charsEngValue = charsEngVariable.Length;
+        private readonly static char[] charsVariable = "абвгдеёжзийклмнопрстуфхцчшщъыьэюяabcdefghijklmnopqrstuvwxyz".ToCharArray();
+        private readonly int charsValue = charsVariable.Length;
         public void CezarCrypt()
         {
             string resultTemp = "";
@@ -21,19 +12,39 @@ namespace Cryptography
                 if (char.IsLetter(c))
                 {
                     char lowerChar = char.ToLower(c);
-                    int index = Array.IndexOf(charsRuVariable, lowerChar);
-
-                    if (index >= 0)
+                    int index = Array.IndexOf(charsVariable, lowerChar);
+                    if (step == 0)
                     {
-                        int newIndex = (index + step) % charsRuValue;
-
-                        if (newIndex < 0)
+                        for (int i = 0; i < charsValue; i++)
                         {
-                            newIndex += charsRuValue;
+                            if (index >= 0)
+                            {
+                                int newIndex = (index + i) % charsValue;
+
+                                if (newIndex < 0)
+                                {
+                                    newIndex += charsValue;
+                                }
+
+                                char newChar = charsVariable[newIndex];
+                                resultTemp += char.IsUpper(c) ? char.ToUpper(newChar) : newChar;
+                            }
                         }
-                   
-                        char newChar = charsRuVariable[newIndex];
-                        resultTemp += char.IsUpper(c) ? char.ToUpper(newChar) : newChar;
+                    }
+                    else
+                    {
+                        if (index >= 0)
+                        {
+                            int newIndex = (index + step) % charsValue;
+
+                            if (newIndex < 0)
+                            {
+                                newIndex += charsValue;
+                            }
+
+                            char newChar = charsVariable[newIndex];
+                            resultTemp += char.IsUpper(c) ? char.ToUpper(newChar) : newChar;
+                        }
                     }
                 }
                 else
@@ -53,18 +64,18 @@ namespace Cryptography
                 if (char.IsLetter(c))
                 {
                     char lowerChar = char.ToLower(c);
-                    int index = Array.IndexOf(charsRuVariable, lowerChar);
+                    int index = Array.IndexOf(charsVariable, lowerChar);
 
                     if (index >= 0)
                     {
-                        int newIndex = (index - step) % charsRuValue;
+                        int newIndex = (index - step) % charsValue;
 
                         if (newIndex < 0)
                         {
-                            newIndex += charsRuValue;
+                            newIndex += charsValue;
                         }
 
-                        char newChar = charsRuVariable[newIndex];
+                        char newChar = charsVariable[newIndex];
                         resultTemp += char.IsUpper(c) ? char.ToUpper(newChar) : newChar;
                     }
                 }
@@ -73,7 +84,7 @@ namespace Cryptography
             }
 
 
-            Console.Write(resultTemp);
+            Console.WriteLine(resultTemp);
 
         }
     }
