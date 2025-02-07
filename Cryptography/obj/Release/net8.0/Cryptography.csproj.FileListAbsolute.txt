@@ -1,0 +1,14 @@
+J:\Project\Cryptography\bin\Release\net8.0\Cryptography.exe
+J:\Project\Cryptography\bin\Release\net8.0\Cryptography.deps.json
+J:\Project\Cryptography\bin\Release\net8.0\Cryptography.runtimeconfig.json
+J:\Project\Cryptography\bin\Release\net8.0\Cryptography.dll
+J:\Project\Cryptography\bin\Release\net8.0\Cryptography.pdb
+J:\Project\Cryptography\obj\Release\net8.0\Cryptography.GeneratedMSBuildEditorConfig.editorconfig
+J:\Project\Cryptography\obj\Release\net8.0\Cryptography.AssemblyInfoInputs.cache
+J:\Project\Cryptography\obj\Release\net8.0\Cryptography.AssemblyInfo.cs
+J:\Project\Cryptography\obj\Release\net8.0\Cryptography.csproj.CoreCompileInputs.cache
+J:\Project\Cryptography\obj\Release\net8.0\Cryptography.dll
+J:\Project\Cryptography\obj\Release\net8.0\refint\Cryptography.dll
+J:\Project\Cryptography\obj\Release\net8.0\Cryptography.pdb
+J:\Project\Cryptography\obj\Release\net8.0\Cryptography.genruntimeconfig.cache
+J:\Project\Cryptography\obj\Release\net8.0\ref\Cryptography.dll
