@@ -3,7 +3,8 @@
     class CesarCrypto(string input, int step = 1)
     {
         private readonly static char[] charsVariable = "абвгдеёжзийклмнопрстуфхцчшщъыьэюяabcdefghijklmnopqrstuvwxyz".ToCharArray();
-        private readonly int charsValue = charsVariable.Length;
+        private readonly int charsValue = 33;
+
         public void CezarCrypt()
         {
             string resultTemp = "";
@@ -13,39 +14,19 @@
                 {
                     char lowerChar = char.ToLower(c);
                     int index = Array.IndexOf(charsVariable, lowerChar);
-                    if (step == 0)
+                    if (index >= 0)
                     {
-                        for (int i = 0; i < charsValue; i++)
+                        int newIndex = (index + step) % charsValue;
+
+                        if (newIndex < 0)
                         {
-                            if (index >= 0)
-                            {
-                                int newIndex = (index + i) % charsValue;
-
-                                if (newIndex < 0)
-                                {
-                                    newIndex += charsValue;
-                                }
-
-                                char newChar = charsVariable[newIndex];
-                                resultTemp += char.IsUpper(c) ? char.ToUpper(newChar) : newChar;
-                            }
+                            newIndex += charsValue;
                         }
-                    }
-                    else
-                    {
-                        if (index >= 0)
-                        {
-                            int newIndex = (index + step) % charsValue;
 
-                            if (newIndex < 0)
-                            {
-                                newIndex += charsValue;
-                            }
-
-                            char newChar = charsVariable[newIndex];
-                            resultTemp += char.IsUpper(c) ? char.ToUpper(newChar) : newChar;
-                        }
+                        char newChar = charsVariable[newIndex];
+                        resultTemp += char.IsUpper(c) ? char.ToUpper(newChar) : newChar;
                     }
+
                 }
                 else
                     resultTemp += c;
@@ -85,7 +66,7 @@
 
 
             Console.WriteLine(resultTemp);
-
+            resultTemp = "";
         }
     }
 }

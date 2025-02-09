@@ -1,8 +1,11 @@
-﻿namespace Cryptography
+﻿//made by Tsezar
+//сделано Цезарем
+
+namespace Cryptography
 {
     internal class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
             Console.ForegroundColor = ConsoleColor.DarkMagenta;
             Console.WriteLine("╔════╗╔══╗╔═══╗╔═══╗╔══╗╔═══╗╔══╗───╔══╗╔═══╗╔╗╔╗╔═══╗╔════╗╔══╗\n" +
@@ -12,6 +15,7 @@
                               "──║║──╔═╝║║╚══╗║─╚═╗║║║║║║║║─╔═╝║───║╚═╗║║║║──╔╝║║║─────║║──║╚╝║\n" +
                               "──╚╝──╚══╝╚═══╝╚═══╝╚╝╚╝╚╝╚╝─╚══╝───╚══╝╚╝╚╝──╚═╝╚╝─────╚╝──╚══╝");
             Console.ForegroundColor = ConsoleColor.Blue;
+
             try
             {
                 CesarCrypto crypto = new("");
@@ -41,18 +45,8 @@
 
                                 break;
                             case "0":
-                                Console.Write("Вы действительно хотите выйти из программы? (Д/н)    ");
-                                string? c = Console.ReadLine();
-                                Console.WriteLine("Принято...");
-                                if (c == "н")
-                                {
-                                    continue;
-                                }
-                                else if (c == "Д")
-                                {
-                                    Environment.Exit(0);
-                                }
-                                break;
+                                ConfirmationExit();
+                                continue;
                         }
                     }
                     else if (input == "E")
@@ -77,29 +71,35 @@
 
                                 break;
                             case "0":
-                                Console.Write("Вы действительно хотите выйти из программы? (Д/н)    ");
-                                string? c = Console.ReadLine();
-                                Console.WriteLine("Принято...");
-                                if (c == "н")
-                                {
-                                    continue;
-                                }
-                                else if (c == "Д")
-                                {
-                                    Environment.Exit(0);
-                                }
-                                break;
+                                ConfirmationExit();
+                                continue;
                         }
                     }
                     else
                     {
-
+                        continue;
                     }
                 }
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex);
+            }
+        }
+
+
+        public static void ConfirmationExit()
+        {
+            Console.Write("Вы действительно хотите выйти из программы? (Д/н)    ");
+            string? c = Console.ReadLine();
+            Console.WriteLine("Принято...");
+            if (c == "н")
+            {
+                return;
+            }
+            else if (c == "Д")
+            {
+                Environment.Exit(0);
             }
         }
     }
