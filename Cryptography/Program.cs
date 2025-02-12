@@ -31,7 +31,7 @@ namespace Cryptography
                         switch (input)
                         {
                             case "C":
-                                Console.Write("Хороший выбор! Выберет размер шага (целое число, 0 - перебор всех вариантов) --> ");
+                                Console.Write("Хороший выбор! Выберет размер шага (целое число) --> ");
                                 int step = Convert.ToInt32(Console.ReadLine());
 
                                 Console.Write("Введите текст для шифрования или укажите путь к файлу с текстом --> ");
