@@ -40,7 +40,7 @@
             Console.WriteLine(resultTemp);
         }
 
-        public void CezarEncrypt()
+        public void CezarDecrypt()
         {
             if (step == 0)
             {
@@ -80,7 +80,7 @@
 
         private void CezarBrutForce()
         {
-            for (int i = 1; i < 33; i++)
+            for (int i = 1; i < currentCharsValue; i++)
             {
                 string resultTemp = "";
                 foreach (var c in input)
@@ -128,7 +128,7 @@
             }
             else
             {
-                currentAlphabet = charsRuVariable;
+                currentAlphabet = charsEngVariable;
                 currentCharsValue = currentAlphabet.Length;
             }
         }

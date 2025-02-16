@@ -67,7 +67,7 @@ namespace Cryptography
                                 if (input != null)
                                     crypto = new(input, step);
 
-                                crypto.CezarEncrypt();
+                                crypto.CezarDecrypt();
 
                                 break;
                             case "0":
