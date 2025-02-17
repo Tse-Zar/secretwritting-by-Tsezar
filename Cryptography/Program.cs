@@ -34,7 +34,7 @@ namespace Cryptography
                                 Console.Write("Хороший выбор! Выберет размер шага (целое число) --> ");
                                 int step = Convert.ToInt32(Console.ReadLine());
 
-                                Console.Write("Введите текст для шифрования или укажите путь к файлу с текстом --> ");
+                                Console.Write("Введите текст для шифрования --> ");
                                 input = Console.ReadLine();
 
                                 Console.WriteLine("Принято! Ждите результат...");
@@ -60,7 +60,7 @@ namespace Cryptography
                                 Console.Write("Хороший выбор! Выберет размер шага (целое число, 0 - перебор всех вариантов) --> ");
                                 int step = Convert.ToInt32(Console.ReadLine());
 
-                                Console.Write("Введите текст для дешифрования или укажите путь к файлу с текстом --> ");
+                                Console.Write("Введите текст для дешифрования --> ");
                                 input = Console.ReadLine();
 
                                 Console.WriteLine("Принято! Ждите результат...");

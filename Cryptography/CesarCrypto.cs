@@ -1,43 +1,19 @@
-﻿namespace Cryptography
+﻿//сделано Цезарем
+//made by Tsezar
+
+namespace Cryptography
 {
     class CesarCrypto(string input, int step = 1)
     {
-        private readonly static char[] charsRuVariable = "абвгдеёжзийклмнопрстуфхцчшщъыьэюя".ToCharArray();
-        private readonly static char[] charsEngVariable = "abcdefghijklmnopqrstuvwxyz".ToCharArray();
+        private readonly char[] charsRuVariable = "абвгдеёжзийклмнопрстуфхцчшщъыьэюя".ToCharArray();
+        private readonly char[] charsEngVariable = "abcdefghijklmnopqrstuvwxyz".ToCharArray();
 
         private static char[] currentAlphabet = new char[33];
         private int currentCharsValue = currentAlphabet.Length;
 
         public void CezarCrypt()
         {
-            string resultTemp = "";
-            foreach (var c in input)
-            {
-                if (char.IsLetter(c))
-                {
-                    SetCurrentAlphabet(c);
-
-                    char lowerChar = char.ToLower(c);
-                    int index = Array.IndexOf(currentAlphabet, lowerChar);
-                    if (index >= 0)
-                    {
-                        int newIndex = (index + step) % currentCharsValue;
-
-                        if (newIndex < 0)
-                        {
-                            newIndex += currentCharsValue;
-                        }
-
-                        char newChar = currentAlphabet[newIndex];
-                        resultTemp += char.IsUpper(c) ? char.ToUpper(newChar) : newChar;
-                    }
-
-                }
-                else
-                    resultTemp += c;
-            }
-
-            Console.WriteLine(resultTemp);
+            Console.WriteLine(ProcessCezar(input, step));
         }
 
         public void CezarDecrypt()
@@ -47,6 +23,20 @@
                 CezarBrutForce();
                 return;
             }
+
+            Console.WriteLine(ProcessCezar(input, -step));
+        }
+
+        private void CezarBrutForce()
+        {
+            for (int i = 1; i < currentCharsValue; i++)
+            {
+                Console.WriteLine(ProcessCezar(input, -i));
+            }
+        }
+
+        private string ProcessCezar(string input, int step)
+        {
 
             string resultTemp = "";
             foreach (var c in input)
@@ -75,43 +65,7 @@
             }
 
 
-            Console.WriteLine(resultTemp);
-        }
-
-        private void CezarBrutForce()
-        {
-            for (int i = 1; i < currentCharsValue; i++)
-            {
-                string resultTemp = "";
-                foreach (var c in input)
-                {
-                    if (char.IsLetter(c))
-                    {
-                        SetCurrentAlphabet(c);
-
-                        char lowerChar = char.ToLower(c);
-                        int index = Array.IndexOf(currentAlphabet, lowerChar);
-
-                        if (index >= 0)
-                        {
-                            int newIndex = (index - i) % currentCharsValue;
-
-                            if (newIndex < 0)
-                            {
-                                newIndex += currentCharsValue;
-                            }
-
-                            char newChar = currentAlphabet[newIndex];
-                            resultTemp += char.IsUpper(c) ? char.ToUpper(newChar) : newChar;
-                        }
-                    }
-                    else
-                        resultTemp += c;
-                }
-
-
-                Console.WriteLine(resultTemp);
-            }
+            return resultTemp;
         }
 
         private bool IsRussian(char c)
