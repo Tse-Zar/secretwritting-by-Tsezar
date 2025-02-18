@@ -43,7 +43,7 @@ namespace Cryptography
             {
                 if (char.IsLetter(c))
                 {
-                    SetCurrentAlphabet(c);
+                    SetCurrentAlphabet(char.ToLower(c));
                     char lowerChar = char.ToLower(c);
                     int index = Array.IndexOf(currentAlphabet, lowerChar);
 

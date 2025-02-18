@@ -21,58 +21,52 @@ namespace Cryptography
                 CesarCrypto crypto = new("");
                 while (true)
                 {
-                    Console.Write("Кодирование/Декодирование (C/E) --> ");
+                    Console.Write("Encrypt/Decrypt (E/D) --> ");
                     string? input = Console.ReadLine();
-                    if (input == "C")
+                    if (input == "E")
                     {
-                        Console.Write("Хорошо, выберете режим шифрования из доступных (С/0) --> ");
+                        Console.Write("Accepted, please select an encrypting algorithm from those available (С) --> ");
                         input = Console.ReadLine();
 
                         switch (input)
                         {
                             case "C":
-                                Console.Write("Хороший выбор! Выберет размер шага (целое число) --> ");
+                                Console.Write("Good choice! Now decide on the step size (whole number) --> ");
                                 int step = Convert.ToInt32(Console.ReadLine());
 
-                                Console.Write("Введите текст для шифрования --> ");
+                                Console.Write("Enter text to encrypt --> ");
                                 input = Console.ReadLine();
 
-                                Console.WriteLine("Принято! Ждите результат...");
+                                Console.WriteLine("Accepted, wait for the result...");
                                 if (input != null)
                                     crypto = new(input, step);
 
                                 crypto.CezarCrypt();
 
                                 break;
-                            case "0":
-                                ConfirmationExit();
-                                continue;
                         }
                     }
-                    else if (input == "E")
+                    else if (input == "D")
                     {
-                        Console.Write("Хорошо, выберете режим дешифрования из доступных (С/0) --> ");
+                        Console.Write("Accepted, please select an decrypting algorithm from those available (С) --> ");
                         input = Console.ReadLine();
 
                         switch (input)
                         {
                             case "C":
-                                Console.Write("Хороший выбор! Выберет размер шага (целое число, 0 - перебор всех вариантов) --> ");
+                                Console.Write("Good choice! Now decide on the step size (whole number, 0 - brute force method) --> ");
                                 int step = Convert.ToInt32(Console.ReadLine());
 
-                                Console.Write("Введите текст для дешифрования --> ");
+                                Console.Write("Enter text to decrypt --> ");
                                 input = Console.ReadLine();
 
-                                Console.WriteLine("Принято! Ждите результат...");
+                                Console.WriteLine("Accepted, wait for the result...");
                                 if (input != null)
                                     crypto = new(input, step);
 
                                 crypto.CezarDecrypt();
 
                                 break;
-                            case "0":
-                                ConfirmationExit();
-                                continue;
                         }
                     }
                     else
@@ -84,22 +78,6 @@ namespace Cryptography
             catch (Exception ex)
             {
                 Console.WriteLine(ex);
-            }
-        }
-
-
-        public static void ConfirmationExit()
-        {
-            Console.Write("Вы действительно хотите выйти из программы? (Д/н)    ");
-            string? c = Console.ReadLine();
-            Console.WriteLine("Принято...");
-            if (c == "н")
-            {
-                return;
-            }
-            else if (c == "Д")
-            {
-                Environment.Exit(0);
             }
         }
     }
