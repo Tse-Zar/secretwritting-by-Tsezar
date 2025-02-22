@@ -7,7 +7,6 @@ namespace Cryptography
     {
         static void Main()
         {
-            Console.ForegroundColor = ConsoleColor.DarkMagenta;
             Console.WriteLine("╔════╗╔══╗╔═══╗╔═══╗╔══╗╔═══╗╔══╗───╔══╗╔═══╗╔╗╔╗╔═══╗╔════╗╔══╗\n" +
                               "╚═╗╔═╝║╔═╝║╔══╝╚═╗─║║╔╗║║╔═╗║║╔═╝───║╔═╝║╔═╗║║║║║║╔═╗║╚═╗╔═╝║╔╗║\n" +
                               "──║║──║╚═╗║╚══╗─╔╝╔╝║╚╝║║╚═╝║║╚═╗───║║──║╚═╝║║╚╝║║╚═╝║──║║──║║║║\n" +
@@ -25,7 +24,7 @@ namespace Cryptography
                     string? input = Console.ReadLine();
                     if (input == "E")
                     {
-                        Console.Write("Accepted, please select an encrypting algorithm from those available (С) --> ");
+                        Console.Write("Accepted, please select an encrypting algorithm from those available (С/A) --> ");
                         input = Console.ReadLine();
 
                         switch (input)
@@ -44,11 +43,22 @@ namespace Cryptography
                                 crypto.CezarCrypt();
 
                                 break;
+
+                            case "A":
+                                Console.WriteLine("Good choice! Now wait for the result... ");
+
+                                Console.Write("Enter text to decrypt --> ");
+                                input = Console.ReadLine();
+
+                                if (input != null)
+                                    AesCrypto.StartEncrypt(input);   
+                                
+                                break;
                         }
                     }
                     else if (input == "D")
                     {
-                        Console.Write("Accepted, please select an decrypting algorithm from those available (С) --> ");
+                        Console.Write("Accepted, please select an decrypting algorithm from those available (С/A) --> ");
                         input = Console.ReadLine();
 
                         switch (input)
@@ -65,6 +75,18 @@ namespace Cryptography
                                     crypto = new(input, step);
 
                                 crypto.CezarDecrypt();
+
+                                break;
+                            case "A":
+                                Console.Write("Good choice! Now enter the key --> ");
+                                string? key = Console.ReadLine();
+
+                                Console.Write("Enter text to decrypt --> ");
+                                input = Console.ReadLine();
+
+                                Console.WriteLine("Accepted, wait for the result...");
+                                if (input != null && key != null)
+                                    AesCrypto.StartDecrypt(input, key);
 
                                 break;
                         }
