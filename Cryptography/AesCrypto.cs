@@ -3,29 +3,45 @@ using System.Text;
 
 namespace Cryptography
 {
-    internal class AesCrypto()
+    internal class AesCrypto
     {
         public static void StartEncrypt(string input)
         {
-            string original = input;
-            using Aes myAes = Aes.Create();
+            try
+            {
+                string original = input;
+                using Aes myAes = Aes.Create();
 
-            byte[] key = myAes.Key;
+                byte[] key = myAes.Key;
+                byte[] iv = myAes.IV;
 
-            byte[] encrypted = EncryptStringToBytes_Aes(original, key, myAes.IV);
+                byte[] encrypted = EncryptStringToBytes_Aes(original, key, iv);
 
-            Console.WriteLine($"Encrypted string: {BitConverter.ToString(encrypted)}");
-            Console.WriteLine($"key: {BitConverter.ToString(key)} IV: {Convert.ToBase64String(myAes.IV)}");
+                Console.WriteLine($"Encrypted string: {Convert.ToBase64String(encrypted)}");
+                Console.WriteLine($"key: {Convert.ToBase64String(key)} IV: {Convert.ToBase64String(iv)}");
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine($"Encrypted failed: {ex.Message}");
+            }
         }
 
-        public static void StartDecrypt(string input, string key)
+        public static void StartDecrypt(string input, string key, string iv)
         {
-            string original = input;
+            try
+            {
+                byte[] originalBase64 = Convert.FromBase64String(input);
+                byte[] keyBase64 = Convert.FromBase64String(key);
+                byte[] ivBase64 = Convert.FromBase64String(iv);
 
-            using Aes myAes = Aes.Create();
 
-            string decrypted = DecryptStringFromBytes_Aes(Encoding.UTF8.GetBytes(original), Encoding.UTF8.GetBytes(key), myAes.IV);
-            Console.WriteLine(decrypted);
+                string decrypted = DecryptStringFromBytes_Aes(originalBase64, keyBase64, ivBase64);
+                Console.WriteLine(decrypted);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Decrypted failed: {ex.Message}");
+            }
         }
 
         private static byte[] EncryptStringToBytes_Aes(string plainText, byte[] Key, byte[] IV)

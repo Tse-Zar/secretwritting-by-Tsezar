@@ -13,13 +13,12 @@ namespace Cryptography
                               "──║║──╚═╗║║╔══╝╔╝╔╝─║╔╗║║╔╗╔╝╚═╗║───║║──║╔╗╔╝╚═╗║║╔══╝──║║──║║║║\n" +
                               "──║║──╔═╝║║╚══╗║─╚═╗║║║║║║║║─╔═╝║───║╚═╗║║║║──╔╝║║║─────║║──║╚╝║\n" +
                               "──╚╝──╚══╝╚═══╝╚═══╝╚╝╚╝╚╝╚╝─╚══╝───╚══╝╚╝╚╝──╚═╝╚╝─────╚╝──╚══╝");
-            Console.ForegroundColor = ConsoleColor.Blue;
-
             try
             {
                 CesarCrypto crypto = new("");
                 while (true)
                 {
+                    Console.ForegroundColor = ChangeColor();
                     Console.Write("Encrypt/Decrypt (E/D) --> ");
                     string? input = Console.ReadLine();
                     if (input == "E")
@@ -81,12 +80,16 @@ namespace Cryptography
                                 Console.Write("Good choice! Now enter the key --> ");
                                 string? key = Console.ReadLine();
 
+                                Console.Write("And more IV --> ");
+                                
+                                string? iv = Console.ReadLine();
+
                                 Console.Write("Enter text to decrypt --> ");
                                 input = Console.ReadLine();
 
                                 Console.WriteLine("Accepted, wait for the result...");
                                 if (input != null && key != null)
-                                    AesCrypto.StartDecrypt(input, key);
+                                    AesCrypto.StartDecrypt(input, key, iv);
 
                                 break;
                         }
@@ -101,6 +104,19 @@ namespace Cryptography
             {
                 Console.WriteLine(ex);
             }
+        }
+
+        private static ConsoleColor ChangeColor()
+        {
+            int i = 0;
+
+            ConsoleColor[] colors = [ConsoleColor.White, ConsoleColor.Blue, ConsoleColor.Red];
+            if (Console.ForegroundColor == ConsoleColor.White)
+                i = 1;
+            if (Console.ForegroundColor == ConsoleColor.Blue)
+                i = 2;
+
+            return colors[i];           
         }
     }
 }
